@@ -1,0 +1,107 @@
+{
+  "info": {
+    "name": "SkyGrid Reliability Endpoint Matrix",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET /health",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/health"
+      }
+    },
+    {
+      "name": "GET /route/state",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/route/state"
+      }
+    },
+    {
+      "name": "POST /api/iot/ingest",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/iot/ingest",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"source\": \"skygrid-auto-drill\", \"type\": \"iot_probe\"}"
+        }
+      }
+    },
+    {
+      "name": "POST /ingest/receipt",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/ingest/receipt",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"source\": \"skygrid-auto-drill\", \"receipt_id\": \"probe\"}"
+        }
+      }
+    },
+    {
+      "name": "POST /validators/heartbeat",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/validators/heartbeat",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"validator_id\": \"west01-probe\", \"status\": \"probe\"}"
+        }
+      }
+    },
+    {
+      "name": "POST /security/events",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/security/events",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"event_type\": \"probe\", \"severity\": \"info\"}"
+        }
+      }
+    },
+    {
+      "name": "POST /return/access",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/return/access",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"request_id\": \"probe\", \"mode\": \"health_check\"}"
+        }
+      }
+    }
+  ]
+}
