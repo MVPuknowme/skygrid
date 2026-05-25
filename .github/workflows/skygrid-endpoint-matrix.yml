@@ -1,0 +1,36 @@
+name: SkyGrid Endpoint Matrix
+
+on:
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: "SkyGrid base URL to probe"
+        required: true
+        type: string
+
+jobs:
+  endpoint-matrix:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: node-javascript
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run SkyGrid endpoint matrix
+        env:
+          SKYGRID_BASE_URL: ${{ inputs.base_url }}
+          SKYGRID_AUTH_TOKEN: ${{ secrets.SKYGRID_AUTH_TOKEN }}
+          SKYGRID_OUTPUT: skygrid-endpoint-matrix-west01.json
+        run: node skygrid-endpoint-matrix.js
+
+      - name: Upload endpoint matrix artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: skygrid-endpoint-matrix-west01
+          path: node-javascript/skygrid-endpoint-matrix-west01.json
