@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "build:skygrid-matrix": "node skygrid-endpoint-matrix.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
