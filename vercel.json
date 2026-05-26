@@ -1,0 +1,10 @@
+{
+  "rewrites": [
+    { "source": "/health", "destination": "/api/health" },
+    { "source": "/route/state", "destination": "/api/route/state" },
+    { "source": "/ingest/receipt", "destination": "/api/ingest/receipt" },
+    { "source": "/validators/heartbeat", "destination": "/api/validators/heartbeat" },
+    { "source": "/security/events", "destination": "/api/security/events" },
+    { "source": "/return/access", "destination": "/api/return/access" }
+  ]
+}
