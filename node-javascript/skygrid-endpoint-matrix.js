@@ -28,13 +28,13 @@ const TIMEOUT_MS = Number(process.env.SKYGRID_TIMEOUT_MS || 8000);
 const AUTH_TOKEN = process.env.SKYGRID_AUTH_TOKEN || "";
 
 const ROUTES = [
-  { method: "POST", path: "/api/iot/ingest", auth_expected: false, body: { source: "skygrid-auto-drill", type: "iot_probe" } },
-  { method: "POST", path: "/ingest/receipt", auth_expected: false, body: { source: "skygrid-auto-drill", receipt_id: "probe" } },
+  { method: "POST", path: "/api/iot/ingest", auth_expected: true, body: { source: "skygrid-auto-drill", type: "iot_probe" } },
+  { method: "POST", path: "/ingest/receipt", auth_expected: true, body: { source: "skygrid-auto-drill", receipt_id: "probe" } },
   { method: "POST", path: "/validators/heartbeat", auth_expected: false, body: { validator_id: "west01-probe", status: "probe" } },
   { method: "POST", path: "/security/events", auth_expected: false, body: { event_type: "probe", severity: "info" } },
-  { method: "GET", path: "/route/state", auth_expected: false },
+  { method: "GET", path: "/route/state", auth_expected: true },
   { method: "POST", path: "/return/access", auth_expected: true, body: { request_id: "probe", mode: "health_check" } },
-  { method: "GET", path: "/health", auth_expected: false }
+  { method: "GET", path: "/health", auth_expected: true }
 ];
 
 function gradeLatency(totalResponseMs) {
