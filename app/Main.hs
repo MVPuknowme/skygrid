@@ -8,7 +8,7 @@ import Network.HTTP.Types qualified as HttpTypes
 import Network.Wai.Handler.Warp (run)
 import Network.Wai.Middleware.Cors
 import Network.Wai.Middleware.RequestLogger (logStdoutDev)
-import System.sim
+import System.Environment
 
 main :: IO ()
 main = do
