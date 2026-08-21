@@ -161,7 +161,7 @@ executable sky-atlas
   import:         common
   hs-source-dirs: app
   main-is:        Main.hs
-  ghc-options:    -O2 -threaded -rtsopts -with-rtsopts=-T
+  ghc-options:    -O2 -threaded -rtsopts -with-rtsopts=-()
   build-depends:
     , base
     , http-types
