@@ -34,7 +34,7 @@
       }
     },
     "cabal-32": {
-      "flake": true,
+      "flake": false,
       "locked": {
         "lastModified": 1603716527,
         "narHash": "sha256-X0TFfdD4KZpwl0Zr6x+PLxUt/VyKQfX7ylXHdmZIL+w=",
